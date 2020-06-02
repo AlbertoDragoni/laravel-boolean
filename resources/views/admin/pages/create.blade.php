@@ -21,6 +21,55 @@
       'name' => 'Sit'
     ]
   ];
+
+  $tags = [
+    [
+      'id' => 1,
+      'name' => 'Tag1'
+    ],
+    [
+      'id' => 2,
+      'name' => 'Tag2'
+    ],
+    [
+      'id' => 3,
+      'name' => 'Tag3'
+    ],
+    [
+      'id' => 4,
+      'name' => 'Tag4'
+    ],
+    [
+      'id' => 5,
+      'name' => 'Tag5'
+    ],
+    [
+      'id' => 6,
+      'name' => 'Tag6'
+    ],
+    [
+      'id' => 7,
+      'name' => 'Tag7'
+    ]
+  ];
+
+  $photos = [
+    [
+      'id' => 1,
+      'title' => 'Lorem Ipsum',
+      'path' => 'images/nomefoto.jpg'
+    ],
+    [
+      'id' => 2,
+      'title' => 'Due Lorem Ipsum',
+      'path' => 'images/nomefoto.jpg'
+    ],
+    [
+      'id' => 3,
+      'title' => 'Tre Lorem Ipsum',
+      'path' => 'images/nomefoto.jpg'
+    ],
+  ];
 @endphp
 
 @extends('layouts.app');
@@ -62,18 +111,59 @@
                 @error ('summary')
                   <small class="form-text">Errore</small>
                 @enderror
+              </div>
               <div class="form-group">
                 <label for="category">Category</label>
 
-                <select class="" name="">
+                <select class="custom-select" name="category" id="category">
                   @foreach ($categories as $category)
                     <option value="{{$category['id']}}">{{$category['name']}}</option>
                   @endforeach
-  
+
                 </select>
                 @error ('category')
                   <small class="form-text">Errore</small>
                 @enderror
+              </div>
+              <div class="form-group">
+                <label for="body">Body</label>
+                <textarea class="form-control" name="body" id="body" rows="10"></textarea>
+                @error ('body')
+                  <small class="form-text">Errore</small>
+                @enderror
+              </div>
+              <div class="form-group">
+                <legend>Tags</legend>
+                <fieldset>
+                  @foreach ($tags as $tag)
+                    <div class="form-check form-check-inline">
+                      <input type="checkbox" class="form-check-input" name="tags[]" id="tag{{$tag['id']}}" value="{{$tag['id']}}">
+                      <label class="form-check-label" for="tag{{$tag['id']}}">{{$tag['name']}}</label>
+                    </div>
+                  @endforeach
+                  @error ('tags')
+                    <small class="form-text">Errore</small>
+                  @enderror
+                </fieldset>
+              </div>
+              <div class="form-group">
+                <fieldset>
+                  <legend>Photos</legend>
+                  @foreach ($photos as $photo)
+                    <div class="form-check form-check-inline">
+                      <input type="checkbox" class="form-check-input" name="photos[]" id="photo{{$photo['id']}}" value="{{$photo['id']}}">
+                      <label class="form-check-label" for="photo{{$photo['id']}}">{{$photo['title']}}
+                        <img src="{{$photo['path']}}" alt="">
+                      </label>
+                    </div>
+                  @endforeach
+                  @error ('photos')
+                    <small class="form-text">Errore</small>
+                  @enderror
+                </fieldset>
+              </div>
+              <div class="form-group">
+                <input type="submit" class="btn btn-primary"value="Salva">
               </div>
             </form>
           </div>
