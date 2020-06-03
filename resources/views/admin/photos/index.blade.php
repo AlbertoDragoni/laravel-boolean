@@ -38,7 +38,7 @@
             <h2>Photos</h2>
           </div>
           <div class="offset-3 col-3">
-            <a href="">Carica una fotografia</a>
+            <a href="{{route('admin.photos.create')}}">Carica una fotografia</a>
           </div>
         </div>
         <table class="table">

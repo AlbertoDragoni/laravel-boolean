@@ -36,3 +36,11 @@ Route::get('/pages/{page}/edit', function(){
 Route::get('/photos', function(){
   return view('admin.photos.index');
 })->name('admin.photos.index');
+
+Route::get('/photos/create', function(){
+  return view('admin.photos.create');
+})->name('admin.photos.create');
+
+Route::post('/photos', function(Request $request){
+  dd($request);
+})->name('admin.photos.store');
